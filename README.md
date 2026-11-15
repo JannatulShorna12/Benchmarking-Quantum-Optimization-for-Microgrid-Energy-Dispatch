@@ -1,11 +1,49 @@
 # Benchmarking Quantum Optimization for Microgrid Energy Dispatch
 
+[![NAPS 2026](https://img.shields.io/badge/NAPS-2026-1f6feb)](#citation)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JannatulShorna12/Benchmarking-Quantum-Optimization-for-Microgrid-Energy-Dispatch/blob/main/notebooks/reproduce_paper.ipynb)
+[![Reproduce paper results](https://github.com/JannatulShorna12/Benchmarking-Quantum-Optimization-for-Microgrid-Energy-Dispatch/actions/workflows/reproduce.yml/badge.svg)](https://github.com/JannatulShorna12/Benchmarking-Quantum-Optimization-for-Microgrid-Energy-Dispatch/actions/workflows/reproduce.yml)
+[![Python 3.9](https://img.shields.io/badge/python-3.9-3776ab)](requirements.txt)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 Jannatul Ferdous Shorna, Zhen Ni, Zebo Yang, Yufei Tang (Florida Atlantic University) and
 Avijit Das (Pacific Northwest National Laboratory)
 
-Code, data and results for our paper at the 2026 North American Power Symposium (NAPS 2026).
+Code, data and results for our paper at the 2026 North American Power Symposium (NAPS 2026):
+gate-based QAOA on IBM Kingston, quantum annealing on D-Wave Advantage2 and the D-Wave Stride
+hybrid solver, benchmarked against MILP for rolling microgrid dispatch on real ERCOT data.
 
-[Poster (PDF)](poster/NAPS2026_poster.pdf)
+**[Poster](poster/NAPS2026_poster.pdf)** | **[Results](#results)** |
+**[Run in Colab](https://colab.research.google.com/github/JannatulShorna12/Benchmarking-Quantum-Optimization-for-Microgrid-Energy-Dispatch/blob/main/notebooks/reproduce_paper.ipynb)** |
+**[QUBO instances](#qubo-benchmark-instances)** | **[Dataset](data/README.md)** | **[Citation](#citation)**
+
+## Highlights
+
+- Two quantum hardware platforms, IBM Kingston (QAOA, p = 2 and 3) and D-Wave Advantage2 (quantum
+  annealing), dispatch a battery microgrid over 6 days and 144 rolling windows on ARPA-E PERFORM
+  ERCOT data. Both return feasible schedules in every window.
+- Gap to the MILP: 13.8% for IBM QAOA, 17.9% for D-Wave Advantage2 and 3.8% for the D-Wave Stride
+  hybrid solver.
+- Exhaustive enumeration of all 2^20 assignments per window shows that 13.73% of the gap comes from
+  the 3-bit grid-import encoding alone. IBM QAOA is within 0.05% of the exact QUBO optimum, and
+  classical samplers on the same QUBO are 3.1% to 3.7% above it.
+- 144 QUBO benchmark instances with reference solutions are included, ready for other solvers.
+- Every table and figure of the paper is rebuilt from the stored runs in a few seconds, with no
+  quantum account.
+
+![Daily operating cost](figures/fig2_daily_cost.png)
+
+## Quick start
+
+```
+git clone https://github.com/JannatulShorna12/Benchmarking-Quantum-Optimization-for-Microgrid-Energy-Dispatch.git
+cd Benchmarking-Quantum-Optimization-for-Microgrid-Energy-Dispatch
+pip install -r requirements.txt
+python scripts/reproduce_paper.py
+```
+
+Or open the [Colab notebook](https://colab.research.google.com/github/JannatulShorna12/Benchmarking-Quantum-Optimization-for-Microgrid-Energy-Dispatch/blob/main/notebooks/reproduce_paper.ipynb),
+which needs no installation.
 
 ## Abstract
 
@@ -236,13 +274,49 @@ For every date there are three figures in `figures/by_date/<date>/` and five tab
 
 </details>
 
+## QUBO benchmark instances
+
+`results/qubo_instances/` holds the 144 dispatch-window QUBOs of the paper (6 days x 24 windows),
+each with 20 binary variables. They are built with the paper's model and settings from the window
+inputs of the exact enumeration run. They are small enough to solve exactly and come from real
+grid data, so they can serve as a benchmark for quantum annealers, QAOA, and classical heuristics.
+
+Each `results/qubo_instances/<date>/window_<hh>.json` contains:
+
+| Field | Content |
+|---|---|
+| `n`, `offset`, `linear`, `quadratic` | the QUBO: E(x) = offset + sum_i h_i x_i + sum_{i<j} J_ij x_i x_j |
+| `variables` | variable names in index order: `g0_t, g1_t, g2_t` (grid bits), `c_t`, `d_t` for steps t = 0..3 |
+| `window` | load, three renewable scenarios with weights, prices (per unit), start SOC, terminal SOC floor, battery mode |
+| `reference` | the schedule committed by the exact solver in the paper run (cheapest feasible dispatch of the encoding): assignment, energy and operating cost; the ground-state energy and assignment of the QUBO; the MILP cost of the window |
+
+`results/qubo_instances/index.csv` lists all windows with these reference values. Loading an
+instance with D-Wave Ocean:
+
+```python
+import json, dimod
+
+inst = json.load(open("results/qubo_instances/2018-07-23/window_17.json"))
+bqm = dimod.BinaryQuadraticModel(
+    {int(i): v for i, v in inst["linear"].items()},
+    {(i, j): v for i, j, v in inst["quadratic"]},
+    inst["offset"], dimod.BINARY)
+print(bqm.energy(dict(enumerate(inst["reference"]["assignment"]))), inst["reference"]["energy"])
+```
+
+`scripts/export_qubo_instances.py` rebuilds the instances from the data and the stored runs. The
+reference energy and the ground state (enumeration of all 2^20 assignments) are computed for the
+QUBO in each file.
+
 ## Repository layout
 
 ```
 main.py                         rolling-horizon runs: MILP, QAOA (simulator or IBM), SQA, exact QUBO, samplers
+notebooks/reproduce_paper.ipynb Colab notebook: tables, figures, per-date results and a QUBO instance
 microgrid/                      model, QUBO, solvers, feasibility repair, scheduler; settings in config.py
 scripts/
   reproduce_paper.py            all paper tables and figures, and the per-date outputs, from stored results
+  export_qubo_instances.py      the 144 window QUBOs as benchmark instances
   run_dwave_qa.py               D-Wave QPU runs
   run_stride_native_rolling.py  D-Wave Stride runs
   grid_aware_soc_clamp.py       grid-aware MILP (MILP column of Table II on 2018-07-23)
@@ -261,9 +335,11 @@ results/
   runtime/runtime_by_date.csv   wall-clock time per window, per date (Section IV-C)
   paper/                        tables written by scripts/reproduce_paper.py
   paper/by_date/<date>/         per-date tables
+  qubo_instances/               144 window QUBOs with reference solutions
 figures/                        Fig. 1 to Fig. 3
 figures/by_date/<date>/         per-date SOC, grid import and hourly cost
 poster/                         NAPS 2026 poster (PDF and PNG)
+.github/workflows/reproduce.yml rebuilds the results and checks every paper number on each push
 ```
 
 Each per-window folder has `df_compare.csv` (cost and feasibility per window), `df_schedule.csv`
@@ -289,7 +365,9 @@ python scripts/reproduce_paper.py
 ```
 
 This reads the stored per-window results, so it needs no quantum hardware and no credentials, and it
-finishes in a few seconds.
+finishes in a few seconds. The same run happens on GitHub after every push
+(`.github/workflows/reproduce.yml`) and fails if any number differs from the paper. The
+[Colab notebook](notebooks/reproduce_paper.ipynb) runs it in the browser.
 
 | Paper | Output |
 |---|---|
@@ -303,6 +381,7 @@ finishes in a few seconds.
 | Study days | `results/paper/study_days.csv` |
 | Per-date tables and figures | `results/paper/by_date/<date>/`, `figures/by_date/<date>/` |
 | D-Wave problem IDs and QPU access time | `results/paper/dwave_problem_ids.csv` |
+| Window QUBOs (run `scripts/export_qubo_instances.py`) | `results/qubo_instances/` |
 
 ## Run the experiments
 
