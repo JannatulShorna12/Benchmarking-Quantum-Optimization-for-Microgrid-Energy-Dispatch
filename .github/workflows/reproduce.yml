@@ -34,3 +34,27 @@ jobs:
               print(bad.to_string())
               sys.exit(1)
           EOF
+
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install all requirements
+        run: pip install -r requirements.txt
+
+      - name: Import every module and the command-line entry point
+        run: |
+          python - <<'EOF2'
+          import importlib, pkgutil
+          import microgrid
+          names = [m.name for m in pkgutil.iter_modules(microgrid.__path__)]
+          for n in names:
+              importlib.import_module(f"microgrid.{n}")
+          print(f"{len(names)} modules import")
+          EOF2
+          python main.py --help > /dev/null && echo "main.py ok"
