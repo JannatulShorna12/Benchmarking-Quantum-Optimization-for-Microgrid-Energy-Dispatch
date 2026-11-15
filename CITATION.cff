@@ -4,6 +4,27 @@ title: "Benchmarking Quantum Optimization for Microgrid Energy Dispatch"
 type: software
 license: MIT
 version: 1.0.0
+repository-code: "https://github.com/JannatulShorna12/Benchmarking-Quantum-Optimization-for-Microgrid-Energy-Dispatch"
+abstract: >-
+  Code, data and results for the NAPS 2026 paper "Benchmarking Quantum Optimization for
+  Microgrid Energy Dispatch". Each rolling dispatch window of a battery microgrid is written
+  as a 20-variable QUBO and solved with QAOA on IBM Kingston, quantum annealing on D-Wave
+  Advantage2, the D-Wave Stride hybrid solver, exact enumeration and classical samplers,
+  and compared with a MILP baseline on ARPA-E PERFORM ERCOT 2018 data. The repository
+  rebuilds every table and figure of the paper from the stored runs and includes the 144
+  window QUBOs as benchmark instances.
+keywords:
+  - quantum optimization
+  - QAOA
+  - quantum annealing
+  - D-Wave
+  - IBM Quantum
+  - QUBO
+  - microgrid
+  - energy management
+  - battery energy storage
+  - MILP
+  - benchmark
 authors:
   - family-names: Shorna
     given-names: Jannatul Ferdous

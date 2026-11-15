@@ -67,7 +67,7 @@ exact QUBO optimum.
 
 ## Framework
 
-![Framework](figures/fig1_framework.png)
+<p align="center"><img src="figures/fig1_framework.png" alt="Framework" width="70%"></p>
 
 Real operating data are preprocessed and reduced to representative scenarios. A day-ahead MILP gives
 the SOC reference and battery mode for the rolling scheduler. Each hour is one dispatch window of four
@@ -326,7 +326,9 @@ scripts/
 data/                           ARPA-E PERFORM ERCOT 2018 load, solar and wind; description in data/README.md
 results/
   by_date/<date>/               MILP, exact QUBO, SQA and classical samplers, per window
-  by_date/<date>_ibm_kingston_p2|p3/   IBM Kingston QAOA, per window
+  by_date/<date>_ibm_kingston_p2/
+  by_date/<date>_ibm_kingston_p3/
+                                IBM Kingston QAOA, per window
   dwave_qa/by_date/<date>/      D-Wave QPU, per window
   stride_native/by_date/<date>/ D-Wave Stride, per window
   grid_aware_clamp.csv          grid-aware MILP, per date
