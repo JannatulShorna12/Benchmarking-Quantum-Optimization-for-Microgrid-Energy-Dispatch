@@ -3,7 +3,7 @@
 [![NAPS 2026](https://img.shields.io/badge/NAPS-2026-1f6feb)](#citation)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JannatulShorna12/Benchmarking-Quantum-Optimization-for-Microgrid-Energy-Dispatch/blob/main/notebooks/reproduce_paper.ipynb)
 [![Reproduce paper results](https://github.com/JannatulShorna12/Benchmarking-Quantum-Optimization-for-Microgrid-Energy-Dispatch/actions/workflows/reproduce.yml/badge.svg)](https://github.com/JannatulShorna12/Benchmarking-Quantum-Optimization-for-Microgrid-Energy-Dispatch/actions/workflows/reproduce.yml)
-[![Python 3.9](https://img.shields.io/badge/python-3.9-3776ab)](requirements.txt)
+[![Python 3.9 | 3.11](https://img.shields.io/badge/python-3.9%20%7C%203.11-3776ab)](requirements.txt)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 Jannatul Ferdous Shorna, Zhen Ni, Zebo Yang, Yufei Tang (Florida Atlantic University) and
@@ -350,12 +350,12 @@ output, repair and hardware details, including D-Wave problem IDs).
 
 ## Installation
 
-Python 3.9.
+Python 3.9 or 3.11.
 
 ```
 git clone https://github.com/JannatulShorna12/Benchmarking-Quantum-Optimization-for-Microgrid-Energy-Dispatch.git
 cd Benchmarking-Quantum-Optimization-for-Microgrid-Energy-Dispatch
-python3.9 -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
