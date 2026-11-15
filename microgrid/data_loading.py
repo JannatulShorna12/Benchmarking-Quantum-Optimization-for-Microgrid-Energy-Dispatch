@@ -79,7 +79,8 @@ def load_forecast_series(
     fc_path  = data_dir / "BA_load_day-ahead_fcst_2018.csv"
 
     df = pd.read_csv(fc_path, parse_dates=["forecast_time"], index_col="forecast_time")
-    # Average duplicate timestamps (two 30-min sub-steps per hour)
+    # Day-ahead forecasts are issued daily with a 48-hour horizon, so every hour appears in
+    # two consecutive issues. Average the two rows of each hour.
     df = df.groupby(df.index).mean()
     df.index = pd.to_datetime(df.index, utc=True)
     df.index.name = "timestamp"

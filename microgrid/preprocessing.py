@@ -29,7 +29,7 @@ _GLOBAL_SCALE_CACHE: Dict[str, float] = {}
 
 
 def compute_global_scale(dataset_dir: Path | None = None) -> float:
-    """P99 of full-year hourly load. Cached on disk + in memory."""
+    """Highest hourly mean load of the year (per-unit base). Cached on disk + in memory."""
     if "scale" in _GLOBAL_SCALE_CACHE:
         return _GLOBAL_SCALE_CACHE["scale"]
 

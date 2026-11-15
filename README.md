@@ -249,7 +249,7 @@ scripts/
   run_milp_only.py              recomputes the rolling MILP and compares it with the stored runs
   scenario_sensitivity.py       scenario-count sweep, k = 1, 3, 5, 10, 51
   scenario_feasibility.py       dispatches feasible under the mean forecast vs. every scenario
-data/                           ARPA-E PERFORM 2018 load, solar and wind (actuals and forecasts)
+data/                           ARPA-E PERFORM ERCOT 2018 load, solar and wind; description in data/README.md
 results/
   by_date/<date>/               MILP, exact QUBO, SQA and classical samplers, per window
   by_date/<date>_ibm_kingston_p2|p3/   IBM Kingston QAOA, per window
@@ -341,15 +341,31 @@ python scripts/reproduce_paper.py
 
 ## Data
 
-`data/` holds the 2018 ERCOT balancing-authority load, solar and wind data from the ARPA-E PERFORM
-dataset: 5-minute actuals and day-ahead forecasts, with 51-member ECMWF ensembles for solar and wind.
-They are resampled to 15 minutes and normalized by 73,262 MW on the first run. Please cite the dataset
-when you use it:
+`data/` holds the ERCOT 2018 system-level series of the ARPA-E PERFORM datasets (NREL, 2022,
+[doi: 10.25984/1891136](https://doi.org/10.25984/1891136), CC BY 4.0). All timestamps are UTC.
 
-B. Sergi et al., "ARPA-E PERFORM datasets," National Renewable Energy Laboratory, 2022,
+| File | Content | Resolution |
+|---|---|---|
+| `BA_load_actuals_2018.csv` | ERCOT system load | 5 min |
+| `BA_solar_actuals_Existing_2018.csv` | solar generation, existing fleet | 5 min |
+| `BA_wind_actuals_Existing_2018.csv` | wind generation, existing fleet | 5 min |
+| `BA_load_day-ahead_fcst_2018.csv` | day-ahead load forecast, 99 percentiles | hourly |
+| `BA_solar_day-ahead_fcst_ecmwf_Existing_2018.csv` | day-ahead solar forecast, 51 ECMWF members | hourly |
+| `BA_wind_day-ahead_fcst_ecmwf_Existing_2018.csv` | day-ahead wind forecast, 51 ECMWF members | hourly |
+
+Each study day is resampled to 15-minute steps and divided by P_scale = 73,262.2 MW, the highest hourly
+mean load of 2018. The 51 ECMWF members are reduced to three k-means medoid scenarios. See
+[data/README.md](data/README.md) for the full description: sources, columns, ranges, the six study
+days, every processing step, and how each series enters the dispatch problem.
+
+Please cite the dataset when you use it:
+
+B. Sergi, C. Feng, F. Zhang, B.-M. Hodge, R. Ring-Jarvi, R. Bryce, K. Doubleday, M. Rose, G. Buster
+and M. Rossol, "ARPA-E PERFORM datasets," National Renewable Energy Laboratory, 2022,
 doi: [10.25984/1891136](https://doi.org/10.25984/1891136).
 
-The data stay under the PERFORM terms of use. The MIT license of this repository covers the code.
+The data are redistributed under CC BY 4.0 with this attribution. The MIT license of this repository
+covers the code.
 
 ## Citation
 
