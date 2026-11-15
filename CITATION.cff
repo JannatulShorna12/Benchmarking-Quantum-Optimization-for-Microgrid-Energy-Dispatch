@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite the paper below."
+title: "Benchmarking Quantum Optimization for Microgrid Energy Dispatch"
+type: software
+license: MIT
+version: 1.0.0
+authors:
+  - family-names: Shorna
+    given-names: Jannatul Ferdous
+    affiliation: Florida Atlantic University
+  - family-names: Ni
+    given-names: Zhen
+    affiliation: Florida Atlantic University
+  - family-names: Yang
+    given-names: Zebo
+    affiliation: Florida Atlantic University
+  - family-names: Tang
+    given-names: Yufei
+    affiliation: Florida Atlantic University
+  - family-names: Das
+    given-names: Avijit
+    affiliation: Pacific Northwest National Laboratory
+preferred-citation:
+  type: conference-paper
+  title: "Benchmarking Quantum Optimization for Microgrid Energy Dispatch"
+  authors:
+    - family-names: Shorna
+      given-names: Jannatul Ferdous
+    - family-names: Ni
+      given-names: Zhen
+    - family-names: Yang
+      given-names: Zebo
+    - family-names: Tang
+      given-names: Yufei
+    - family-names: Das
+      given-names: Avijit
+  collection-title: "2026 North American Power Symposium (NAPS)"
+  year: 2026

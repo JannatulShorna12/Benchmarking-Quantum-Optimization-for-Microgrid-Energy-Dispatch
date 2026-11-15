@@ -1,0 +1,22 @@
+# Python 3.9
+numpy==2.0.2
+pandas==2.3.3
+scipy==1.13.1
+scikit-learn==1.6.1
+matplotlib==3.9.4
+
+# MILP baseline (CBC through PuLP)
+PuLP==3.3.1
+
+# QAOA: local simulation and IBM Quantum hardware
+qiskit==2.2.3
+qiskit-aer==0.17.2
+qiskit-ibm-runtime==0.43.1
+
+# D-Wave QPU, D-Wave Stride and the classical samplers
+dimod==0.12.21
+dwave-cloud-client==0.14.0
+dwave-system==1.33.0
+dwave-samplers==1.6.0
+dwave-optimization==0.6.4
+minorminer==0.2.19

@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantum-microgrid-dispatch"
+version = "1.0.0"
+description = "Benchmarking quantum optimization for microgrid energy dispatch (NAPS 2026)"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Jannatul Ferdous Shorna"}]
+requires-python = ">=3.9"
+dependencies = [
+    "numpy==2.0.2",
+    "pandas==2.3.3",
+    "scipy==1.13.1",
+    "scikit-learn==1.6.1",
+    "matplotlib==3.9.4",
+    "PuLP==3.3.1",
+    "qiskit==2.2.3",
+    "qiskit-aer==0.17.2",
+    "qiskit-ibm-runtime==0.43.1",
+    "dimod==0.12.21",
+    "dwave-cloud-client==0.14.0",
+    "dwave-system==1.33.0",
+    "dwave-samplers==1.6.0",
+    "dwave-optimization==0.6.4",
+    "minorminer==0.2.19",
+]
+
+[tool.setuptools]
+packages = ["microgrid"]

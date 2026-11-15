@@ -1,0 +1,5 @@
+solver,mean_seconds_per_window,source
+MILP (CBC),0.042,results/by_date
+IBM Kingston QAOA p=2,332.099,results/by_date/*_ibm_kingston_p2
+IBM Kingston QAOA p=3,663.5393,results/by_date/*_ibm_kingston_p3
+D-Wave Advantage_system6.4,2.0065,results/runtime/runtime_by_date.csv

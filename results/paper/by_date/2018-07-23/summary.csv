@@ -1,0 +1,13 @@
+method,cost,gap_vs_milp_pct,feasible_windows,windows
+milp_grid_aware,38.0698,-0.14,24,24
+milp,38.1232,0.0,24,24
+exact_qubo,40.371,5.8962,24,24
+ibm_qaoa_p2,40.4418,6.0818,24,24
+ibm_qaoa_p3,40.4418,6.0818,24,24
+dwave_qpu,41.5957,9.1087,24,24
+dwave_stride,38.7968,1.767,24,24
+sqa,41.3396,8.437,24,24
+sa,41.6114,9.1499,24,24
+tabu,41.7984,9.6403,24,24
+greedy,41.7625,9.5463,24,24
+random,38.485,0.9491,21,24

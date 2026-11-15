@@ -1,0 +1,4 @@
+platform,windows,raw_feasible,repair_used,mean_bits_changed_when_repaired,fallback_used,final_feasible
+IBM Kingston QAOA p=2,144,144.0,3.0,,0.0,144
+D-Wave Advantage2_system1,144,144.0,9.0,2.4444,0.0,144
+Random sampling control (same repair),144,,,,,58

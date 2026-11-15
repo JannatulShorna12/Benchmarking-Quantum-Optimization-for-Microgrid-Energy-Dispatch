@@ -1,0 +1,13 @@
+solver,description,total_cost,windows,feasible_windows,gap_vs_milp_137_54_pct,gap_vs_milp_137_49_pct,gap_vs_exact_pct
+milp_grid_aware,MILP with grid-aware SOC floor on 2018-07-23,137.4858,144,144,-0.0388,0.0,-12.0705
+milp,MILP (CBC) rolling horizon,137.5392,144,144,0.0,0.0388,-12.0364
+exact,Exact QUBO optimum (enumeration),156.3592,144,144,13.6834,13.7275,0.0
+qaoa_p2,IBM Kingston QAOA p=2,156.4299,144,144,13.7348,13.779,0.0453
+qaoa_p3,IBM Kingston QAOA p=3,156.4299,144,144,13.7348,13.779,0.0453
+dwave_qpu,D-Wave Advantage2_system1 QPU,162.0355,144,144,17.8104,17.8562,3.6303
+stride,D-Wave Stride (hybrid nonlinear),142.687,144,143,3.7428,3.7831,-8.7441
+sqa,Simulated quantum annealing (same QUBO),161.1596,144,144,17.1736,17.2191,3.0701
+sa,Simulated annealing (same QUBO),161.6708,144,144,17.5453,17.5909,3.3971
+tabu,Tabu search (same QUBO),161.8407,144,144,17.6688,17.7145,3.5057
+greedy,Steepest descent (same QUBO),162.1894,144,144,17.9224,17.9681,3.7288
+random,Random sampling control (same QUBO),84.2211,144,58,-38.7658,-38.742,-46.1362

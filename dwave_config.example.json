@@ -1,0 +1,17 @@
+{
+  "name": "Microgrid-DWave",
+  "token": "PASTE_YOUR_LEAP_TOKEN_HERE",
+  "endpoint": "https://cloud.dwavesys.com/sapi/v2/",
+  "solver": {
+    "qpu": "Advantage2_system1",
+    "hybrid": "hybrid_binary_quadratic_model_version2p",
+    "stride": "hybrid_nonlinear_program_version1p"
+  },
+  "defaults": {
+    "num_reads": 1000,
+    "annealing_time_us": 20,
+    "chain_strength_scale": 1.0,
+    "hybrid_time_limit_s": 5,
+    "stride_time_limit_s": null
+  }
+}

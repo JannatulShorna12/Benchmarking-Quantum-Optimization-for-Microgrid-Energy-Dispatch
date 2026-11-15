@@ -1,0 +1,29 @@
+# Credentials
+apikey.json
+dwave_config.json
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Cached preprocessing (rebuilt from data/ on the first run)
+data/processed/
+data/forecast/
+data/combined/
+
+# Run outputs that are not part of the paper results
+logs/
+metadata.json
+results/by_date/*/figures/
+results/dwave_qa/by_date/*/figures/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

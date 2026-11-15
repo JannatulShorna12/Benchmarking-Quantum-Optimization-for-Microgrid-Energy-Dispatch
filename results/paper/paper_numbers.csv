@@ -1,0 +1,136 @@
+section,quantity,paper_value,repository_value,status,source,note
+Abstract,IBM QAOA gap to MILP (%),13.8,13.8,match,results/paper/solver_totals.csv,basis: MILP 137.49
+Abstract,D-Wave Advantage2 gap to MILP (%),17.9,17.9,match,results/paper/solver_totals.csv,basis: MILP 137.49
+Abstract,D-Wave Stride gap to MILP (%),3.8,3.8,match,results/paper/solver_totals.csv,basis: MILP 137.49
+Abstract,Encoding share of the gap (%),13.73,13.73,match,results/paper/solver_totals.csv,exact QUBO optimum vs MILP 137.49
+Abstract,IBM QAOA above exact QUBO optimum (%),0.05,0.05,match,results/paper/solver_totals.csv,
+III-B,"Cost change over k in {1,3,5,10,51} (%)",0.09,0.09,match,results/paper/scenarios.csv,
+III-B,Fewer dispatches when balance is required in every scenario (%),18.3,18.3,match,results/paper/scenarios.csv,
+III-D,Hamming anchor lambda_H (IBM Kingston runs),0.10,0.10,match,microgrid/config.py (IBM_RUN_REPAIR),
+III-D,QAOA windows needing no repair beyond stage S1,141 of 144,141 of 144,match,results/paper/feasibility_repair.csv,IBM Kingston p=2
+III-D,"Windows with feasible dispatch, no MILP fallback",144,144,match,results/paper/feasibility_repair.csv,IBM Kingston p=2
+III/IV,Binary variables per window,20,20,match,microgrid/config.py (BITS_PER_STEP*T),
+III/IV,lambda_b,150,150,match,microgrid/config.py (LAM_BALANCE),
+III/IV,lambda_m,120,120,match,microgrid/config.py (LAM_MUTEX),
+III/IV,lambda_s,250,250,match,microgrid/config.py (LAM_SOC),
+III/IV,lambda_v,0.5,0.5,match,microgrid/config.py (LAM_RESERVE),
+III/IV,lambda_k,6,6,match,microgrid/config.py (LAM_TRACK),
+III/IV,COBYLA max iterations,60,60,match,microgrid/config.py (QAOA_MAX_ITER),
+III/IV,COBYLA restarts,8,8,match,microgrid/config.py (QAOA_RESTARTS),
+III/IV,Scenarios (k-means medoids),3,3,match,microgrid/config.py (N_SCENARIOS),
+III/IV,P_G (pu),1.0,1.0,match,microgrid/config.py (P_GRID),
+III/IV,P_B (pu),0.15,0.15,match,microgrid/config.py (P_BATT),
+III/IV,SOC_cap (pu h),0.60,0.60,match,microgrid/config.py (SOC_CAP),
+III/IV,eta_c = eta_d,0.95,0.95,match,microgrid/config.py (ETA_C),
+III/IV,SOC_min,0.10,0.10,match,microgrid/config.py (SOC_MIN),
+III/IV,SOC_max,0.90,0.90,match,microgrid/config.py (SOC_MAX),
+III/IV,SOC_0,0.50,0.50,match,microgrid/config.py (SOC_INIT),
+III/IV,C_grid,2.0,2.0,match,microgrid/config.py (C_GRID),
+III/IV,C_cycle,0.018,0.018,match,microgrid/config.py (C_CYCLE),
+III/IV,C_shed,8.0,8.0,match,microgrid/config.py (C_SHED),
+III/IV,CBC time limit per window (s),30,30,match,microgrid/config.py (MILP_TIME_LIMIT),
+III/IV,CBC relative gap,1e-06,1e-06,match,microgrid/config.py (MILP_GAP_REL),
+IV,TOU price levels,"0.7, 1.0, 1.4, 1.6","0.7, 1.0, 1.4, 1.6",match,microgrid/config.py (PRICE_VEC),
+IV,P_scale (MW),"73,262","73,262",match,data/ (microgrid/preprocessing.py),maximum hourly mean load of 2018
+IV-D,Grid level as share of capacity (%),14,14,match,microgrid/config.py (GRID_COEFFS),one level = P_G/7
+Table I,IBM hardware windows (p=2 + p=3),288,288,match,"results/by_date/*_ibm_kingston_p2, *_p3",
+Table I,Logical variables per window,20,20,match,microgrid/config.py (BITS_PER_STEP*T),
+Table I,D-Wave hardware windows,144,144,match,results/dwave_qa,
+Table I,IBM processor,Heron r2,Heron r2,match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+Table I,IBM topology,Heavy-hex,Heavy-hex,match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+Table I,IBM working qubits,156,156,match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+Table I,IBM median T1 (us),173,173,match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+Table I,IBM CZ error,2.1e-03,2.1e-03,match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+Table I,IBM readout error,1.5e-02,1.5e-02,match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+Table I,IBM shots per window,"16,384","16,384",match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+Table I,IBM transpile optimization level,3,3,match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+Table I,D-Wave processor (runtime study),Advantage_system6.4,Advantage_system6.4,match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+Table I,D-Wave topology (runtime study),Pegasus,Pegasus,match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+Table I,D-Wave working qubits (runtime study),"5,627","5,627",match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+Table I,D-Wave reads per window (runtime study),"4,000","4,000",match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+Table I,"D-Wave anneal time, us (runtime study)",100,100,match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+Table I,D-Wave embedding,minorminer,minorminer,match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+Table I,D-Wave chain strength,uniform_torque_compensation,uniform_torque_compensation,match,"microgrid/config.py (IBM_HARDWARE, DWAVE_HARDWARE)",
+IV-A,MILP total cost,137.54,137.54,match,results/paper/solver_totals.csv,
+IV-A,IBM Kingston total cost,156.43,156.43,match,results/paper/solver_totals.csv,
+IV-A,IBM Kingston gap to MILP (%),13.7,13.7,match,results/paper/solver_totals.csv,basis: MILP 137.54
+IV-A,D-Wave QPU total cost,162.04,162.04,match,results/paper/solver_totals.csv,
+IV-A,D-Wave QPU gap to MILP (%),17.8,17.8,match,results/paper/solver_totals.csv,basis: MILP 137.54
+IV-A,D-Wave Stride total cost,142.69,142.69,match,results/paper/solver_totals.csv,
+IV-A,D-Wave Stride gap to MILP (%),3.7,3.7,match,results/paper/solver_totals.csv,basis: MILP 137.54
+IV-A,"Largest gap, 2018-04-14 (%)",34,34,match,results/paper/table2_daily_cost.csv,
+Table II,2018-03-03 MILP,16.34,16.34,match,results/paper/table2_daily_cost.csv,"grid-aware MILP on 2018-07-23, stored MILP on the other dates"
+Table II,2018-03-03 Exact QUBO cost,19.58,19.58,match,results/paper/table2_daily_cost.csv,
+Table II,2018-03-03 Exact QUBO delta (%),+19.80,+19.80,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-03-03 IBM cost,19.58,19.58,match,results/paper/table2_daily_cost.csv,
+Table II,2018-03-03 IBM delta (%),+19.80,+19.80,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-03-03 D-Wave QPU cost,20.73,20.73,match,results/paper/table2_daily_cost.csv,
+Table II,2018-03-03 D-Wave QPU delta (%),+26.87,+26.87,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-03-03 D-Wave Stride cost,17.55,17.55,match,results/paper/table2_daily_cost.csv,
+Table II,2018-03-03 D-Wave Stride delta (%),+7.40,+7.40,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-04-13 MILP,15.33,15.33,match,results/paper/table2_daily_cost.csv,"grid-aware MILP on 2018-07-23, stored MILP on the other dates"
+Table II,2018-04-13 Exact QUBO cost,18.73,18.73,match,results/paper/table2_daily_cost.csv,
+Table II,2018-04-13 Exact QUBO delta (%),+22.21,+22.21,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-04-13 IBM cost,18.73,18.73,match,results/paper/table2_daily_cost.csv,
+Table II,2018-04-13 IBM delta (%),+22.21,+22.21,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-04-13 D-Wave QPU cost,19.56,19.56,match,results/paper/table2_daily_cost.csv,
+Table II,2018-04-13 D-Wave QPU delta (%),+27.63,+27.63,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-04-13 D-Wave Stride cost,16.20,16.20,match,results/paper/table2_daily_cost.csv,
+Table II,2018-04-13 D-Wave Stride delta (%),+5.68,+5.68,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-04-14 MILP,11.16,11.16,match,results/paper/table2_daily_cost.csv,"grid-aware MILP on 2018-07-23, stored MILP on the other dates"
+Table II,2018-04-14 Exact QUBO cost,14.96,14.96,match,results/paper/table2_daily_cost.csv,
+Table II,2018-04-14 Exact QUBO delta (%),+34.01,+34.01,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-04-14 IBM cost,14.96,14.96,match,results/paper/table2_daily_cost.csv,
+Table II,2018-04-14 IBM delta (%),+34.01,+34.01,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-04-14 D-Wave QPU cost,15.56,15.56,match,results/paper/table2_daily_cost.csv,
+Table II,2018-04-14 D-Wave QPU delta (%),+39.44,+39.44,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-04-14 D-Wave Stride cost,12.25,12.25,match,results/paper/table2_daily_cost.csv,
+Table II,2018-04-14 D-Wave Stride delta (%),+9.78,+9.78,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-06-27 MILP,33.51,33.51,match,results/paper/table2_daily_cost.csv,"grid-aware MILP on 2018-07-23, stored MILP on the other dates"
+Table II,2018-06-27 Exact QUBO cost,36.19,36.19,match,results/paper/table2_daily_cost.csv,
+Table II,2018-06-27 Exact QUBO delta (%),+7.98,+7.98,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-06-27 IBM cost,36.19,36.19,match,results/paper/table2_daily_cost.csv,
+Table II,2018-06-27 IBM delta (%),+7.98,+7.98,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-06-27 D-Wave QPU cost,37.68,37.68,match,results/paper/table2_daily_cost.csv,
+Table II,2018-06-27 D-Wave QPU delta (%),+12.44,+12.44,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-06-27 D-Wave Stride cost,34.52,34.52,match,results/paper/table2_daily_cost.csv,
+Table II,2018-06-27 D-Wave Stride delta (%),+3.00,+3.00,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-07-23 MILP,38.07,38.07,match,results/paper/table2_daily_cost.csv,"grid-aware MILP on 2018-07-23, stored MILP on the other dates"
+Table II,2018-07-23 Exact QUBO cost,40.37,40.37,match,results/paper/table2_daily_cost.csv,
+Table II,2018-07-23 Exact QUBO delta (%),+5.90,+5.90,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-07-23 IBM cost,40.44,40.44,match,results/paper/table2_daily_cost.csv,
+Table II,2018-07-23 IBM delta (%),+6.08,+6.08,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-07-23 D-Wave QPU cost,41.60,41.60,match,results/paper/table2_daily_cost.csv,
+Table II,2018-07-23 D-Wave QPU delta (%),+9.11,+9.11,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-07-23 D-Wave Stride cost,38.80,38.80,match,results/paper/table2_daily_cost.csv,
+Table II,2018-07-23 D-Wave Stride delta (%),+1.77,+1.77,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-10-26 MILP,23.07,23.07,match,results/paper/table2_daily_cost.csv,"grid-aware MILP on 2018-07-23, stored MILP on the other dates"
+Table II,2018-10-26 Exact QUBO cost,26.53,26.53,match,results/paper/table2_daily_cost.csv,
+Table II,2018-10-26 Exact QUBO delta (%),+15.00,+15.00,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-10-26 IBM cost,26.53,26.53,match,results/paper/table2_daily_cost.csv,
+Table II,2018-10-26 IBM delta (%),+15.00,+15.00,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-10-26 D-Wave QPU cost,26.90,26.90,match,results/paper/table2_daily_cost.csv,
+Table II,2018-10-26 D-Wave QPU delta (%),+16.59,+16.59,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,2018-10-26 D-Wave Stride cost,23.37,23.37,match,results/paper/table2_daily_cost.csv,
+Table II,2018-10-26 D-Wave Stride delta (%),+1.29,+1.29,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,Total MILP,137.49,137.49,match,results/paper/table2_daily_cost.csv,"grid-aware MILP on 2018-07-23, stored MILP on the other dates"
+Table II,Total Exact QUBO cost,156.36,156.36,match,results/paper/table2_daily_cost.csv,
+Table II,Total Exact QUBO delta (%),+13.68,+13.68,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,Total IBM cost,156.43,156.43,match,results/paper/table2_daily_cost.csv,
+Table II,Total IBM delta (%),+13.7,+13.7,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,Total D-Wave QPU cost,162.04,162.04,match,results/paper/table2_daily_cost.csv,
+Table II,Total D-Wave QPU delta (%),+17.81,+17.81,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,Total D-Wave Stride cost,142.69,142.69,match,results/paper/table2_daily_cost.csv,
+Table II,Total D-Wave Stride delta (%),+3.7,+3.7,match,results/paper/table2_daily_cost.csv,relative to the rolling MILP of the same date (results/by_date)
+Table II,IBM p=2 vs p=3 per-window cost difference,< 1e-9,< 1e-9,match,"results/by_date/*_ibm_kingston_p2, *_p3",maximum absolute difference 0 over 144 paired windows
+IV-B,"Terminal SOC, MILP (2018-07-23)",0.162,0.162,match,results/paper/soc_2018-07-23.csv,
+IV-B,"Terminal SOC, IBM (2018-07-23)",0.128,0.128,match,results/paper/soc_2018-07-23.csv,
+IV-B,D-Wave raw dispatch feasible,144/144,144/144,match,results/paper/feasibility_repair.csv,
+IV-B,D-Wave windows where repair fired,9/144,9/144,match,results/paper/feasibility_repair.csv,
+IV-B,"Bits changed by repair (of 20), mean",2.4,2.4,match,results/paper/feasibility_repair.csv,D-Wave windows where repair fired
+IV-B,Random sampling feasible windows,58/144,58/144,match,results/paper/feasibility_repair.csv,
+IV-C,IBM Kingston p=2 mean time per window (s),332.1,332.1,match,results/paper/runtime.csv,
+IV-C,IBM Kingston p=3 mean time per window (s),663.5,663.5,match,results/paper/runtime.csv,
+IV-C,D-Wave mean time per window (s),2.006,2.006,match,results/paper/runtime.csv,
+V,Encoding share of the gap (%),13.68,13.68,match,results/paper/solver_totals.csv,basis: MILP 137.54
+V,Metaheuristics above exact QUBO (%),3.1-3.7,3.1-3.7,match,results/paper/solver_totals.csv,"SQA, simulated annealing, tabu, steepest descent"
